@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block titulo %} Login {% endblock titulo %}
+
+{% block contenido %}
+<header>
+    <h2 class="text-center py-3">Pagina Login de Usuarios</h1>
+</header>
+<main>
+    <section>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-5 col-lg-4">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form}}
+                    <input type="submit" value="Iniciar Sesion">
+                </form>
+            </div>
+        </div>
+        
+    </section>
+</main>
+
+{% endblock contenido %}
