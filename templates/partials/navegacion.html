@@ -11,9 +11,9 @@
             {% if perms.vehiculo.add_vehiculo %}
               <a class="nav-link" href="{% url "registro" %}">Agregar</a>
             {% endif %}
-            {% comment %} {% if perms.vehiculo.visualizar_catalogo %} {% endcomment %}
+            {% if perms.vehiculo.visualizar_catalogo %}
               <a class="nav-link" href="{% url "listado" %}">Listar</a>
-            {% comment %} {% endif %} {% endcomment %}
+            {% endif %}
             
             
           {% endif %}
