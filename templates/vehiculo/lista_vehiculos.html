@@ -26,22 +26,20 @@
               </tr>
             </thead>
             <tbody>
-                {% for vehiculo in vehiculos %}
+                {% for v in vehiculos %}
                 <tr>
-                    <th scope="row">{{vehiculo.id}}</th>
-                    <td>{{vehiculo.matrca}}</td>
-                    <td>{{vehiculo.modelo}}</td>
-                    <td>{{vehiculo.serial_carroceria}}</td>
-                    <td>{{vehiculo.serial_motor}}</td>
-                    <td>{{vehiculo.categoria}}</td>
-                    <td>{{vehiculo.precio}}</td>
-                    {% if vehiculo.precio > 0 and vehiculo.precio<=10000 %}
+                    <th scope="row">{{v.id}}</th>
+                    <td>{{v.marca}}</td>
+                    <td>{{v.modelo}}</td>
+                    <td>{{v.serial_carroceria}}</td>
+                    <td>{{v.serial_motor}}</td>
+                    <td>{{v.categoria}}</td>
+                    <td>{{v.precio}}</td>
+                    {% if v.precio <= 10000 %}
                         <td>Bajo</td>
-                    {% endif %}
-                    {% if vehiculo.precio > 10000 and vehiculo.precio<=30000 %}
+                    {% elif v.precio <= 30000 %}
                         <td>Medio</td>
-                    {% endif %}
-                    {% if vehiculo.precio > 30000 %}
+                    {% else %}
                         <td>Alto</td>
                     {% endif %}
                   </tr>  

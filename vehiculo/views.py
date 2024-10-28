@@ -5,10 +5,19 @@ from .models import Vehiculo
 from .forms import VehiculoForm
 from django.contrib.auth.decorators import login_required, permission_required 
 from django.views.generic import ListView
+from django.contrib.auth.mixins import AccessMixin, LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 
 
 
 # Create your views here.
+
+#@login_required(login_url='/usuarios/login/')
+#@permission_required('vehiculo.visualizar_catalogo', raise_exception=False, login_url='/')    
+class VehiculoListView(ListView):
+    model = Vehiculo
+    template_name = "vehiculo/lista_vehiculos.html"
+    context_object_name = 'vehiculos'
+
 @login_required(login_url='/usuarios/login/')
 @permission_required('vehiculo.add_vehiculo', raise_exception=False, login_url='/')
 def registro(request):
@@ -36,9 +45,3 @@ def registro(request):
         return render(request, "vehiculo/registro_vehiculo.html", {"form": form})
 
 
-@login_required(login_url='/usuarios/login/')
-@permission_required('vehiculo.visualizar_catalogo', raise_exception=False, login_url='/')    
-class VehiculoListView(ListView):
-    model = Vehiculo
-    template_name = "vehiculo/lista_vehiculos.html"
-    context_object_name = 'vehiculos'
